@@ -47,6 +47,11 @@ launchAlgorithm({
   result
 });
 
+launchAlgorithm({
+  sortFunctionName: "standartSort",
+  result
+});
+
 console.log(result);
 
 function launchAlgorithm({ sortFunction, sortFunctionName, result }) {
@@ -67,7 +72,9 @@ function launchAlgorithm({ sortFunction, sortFunctionName, result }) {
       startDate = Date.now();
 
       try {
-        sortFunction(testSequence);
+        sortFunction
+            ? sortFunction(testSequence)
+            : testSequence.sort((a, b) => a - b);
       } catch (error) {
         console.error(error.message);
         diffs.push(error.message);
