@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sorting Algorithms Comparison</title>
+</head>
+<body>
+
+<pre id="x-pre-json"></pre>
+
+<script>
+    fetch("result.json")
+        .then(response => response.json())
+        .then(json => document.getElementById("x-pre-json").innerText = json);
+</script>
+
+</body>
+</html>
