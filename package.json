@@ -4,8 +4,13 @@
   "description": "Sorting algorithms comparison",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && node launch.js && mkdir dist && cp result.json dist/ && cp public/index.html dist/",
+    "clean": "rm -rf dist",
+    "deploy": "npm run clean && npm run build && gh-pages -d dist"
   },
   "author": "Mykola Pelekh",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
+  }
 }
