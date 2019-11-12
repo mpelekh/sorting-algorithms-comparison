@@ -1,3 +1,4 @@
+const fs = require("fs");
 const quickSort = require("./algorithms/quick-sort");
 const { generateNumbers, calculateTimeDiff } = require("./utils");
 
@@ -53,6 +54,8 @@ launchAlgorithm({
 });
 
 console.log(result);
+
+fs.writeFileSync("./result.json", JSON.stringify(result));
 
 function launchAlgorithm({ sortFunction, sortFunctionName, result }) {
   console.log(` === ${sortFunctionName} ===`);
