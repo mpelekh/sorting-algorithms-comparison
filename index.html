@@ -10,7 +10,7 @@
 <script>
     fetch("result.json")
         .then(response => response.json())
-        .then(json => document.getElementById("x-pre-json").innerText = json);
+        .then(json => document.getElementById("x-pre-json").innerText = JSON.stringify(json));
 </script>
 
 </body>
