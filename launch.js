@@ -55,7 +55,7 @@ launchAlgorithm({
 
 console.log(result);
 
-fs.writeFileSync("./result.json", JSON.stringify(result));
+fs.writeFileSync("./result.json", JSON.stringify(convertToUIReadableData(result)));
 
 function launchAlgorithm({ sortFunction, sortFunctionName, result }) {
   console.log(` === ${sortFunctionName} ===`);
@@ -90,4 +90,36 @@ function launchAlgorithm({ sortFunction, sortFunctionName, result }) {
     }
     result[sortFunctionName][sequnce] = diffs;
   }
+}
+
+function convertToUIReadableData(data) {
+  const result = [];
+
+  result.push({
+    title: "Quick Sort",
+    values: [
+      ["Number of Elements in Array", "Random Order", "Sorted (ASC)", "Sorted (DESC)"],
+      [ARRAY_SIZES.SMALL, data["quickSort"]["RANDOM"][0], data["quickSort"]["ASC"][0], data["quickSort"]["DESC"][0]],
+      [ARRAY_SIZES.MEDIUM, data["quickSort"]["RANDOM"][1], data["quickSort"]["ASC"][1], data["quickSort"]["DESC"][1]],
+      [ARRAY_SIZES.LARGE, data["quickSort"]["RANDOM"][2], data["quickSort"]["ASC"][2], data["quickSort"]["DESC"][2]],
+      [ARRAY_SIZES.XLARGE, data["quickSort"]["RANDOM"][3], data["quickSort"]["ASC"][3], data["quickSort"]["DESC"][3]],
+      [ARRAY_SIZES.XXLARGE, data["quickSort"]["RANDOM"][4], data["quickSort"]["ASC"][4], data["quickSort"]["DESC"][4]],
+      [ARRAY_SIZES.XXXLARGE, data["quickSort"]["RANDOM"][5], data["quickSort"]["ASC"][5], data["quickSort"]["DESC"][5]],
+    ]
+  });
+
+  result.push({
+    title: "Standart Sort",
+    values: [
+      ["Number of Elements in Array", "Random Order", "Sorted (ASC)", "Sorted (DESC)"],
+      [ARRAY_SIZES.SMALL, data["standartSort"]["RANDOM"][0], data["standartSort"]["ASC"][0], data["standartSort"]["DESC"][0]],
+      [ARRAY_SIZES.MEDIUM, data["standartSort"]["RANDOM"][1], data["standartSort"]["ASC"][1], data["standartSort"]["DESC"][1]],
+      [ARRAY_SIZES.LARGE, data["standartSort"]["RANDOM"][2], data["standartSort"]["ASC"][2], data["standartSort"]["DESC"][2]],
+      [ARRAY_SIZES.XLARGE, data["standartSort"]["RANDOM"][3], data["standartSort"]["ASC"][3], data["standartSort"]["DESC"][3]],
+      [ARRAY_SIZES.XXLARGE, data["standartSort"]["RANDOM"][4], data["standartSort"]["ASC"][4], data["standartSort"]["DESC"][4]],
+      [ARRAY_SIZES.XXXLARGE, data["standartSort"]["RANDOM"][5], data["standartSort"]["ASC"][5], data["standartSort"]["DESC"][5]],
+    ]
+  });
+  
+  return result;
 }
