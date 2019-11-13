@@ -1,7 +1,7 @@
 /**
  * current function is used to randomly generate numbers
  * @param  {int} amount - amount of items to henerate
- * @return {[int]}
+ * @return {[int]} numbers - the sequence of numbers with length equal to amount
  */
 function generateNumbers(amount) {
   const arr = [];

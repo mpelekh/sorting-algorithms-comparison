@@ -33,7 +33,13 @@
         var options = {
           title,
           curveType: "function",
-          legend: { position: "bottom" }
+          legend: { position: "bottom" },
+          hAxis: {
+            title: 'Number of Elements in Array'
+          },
+          vAxis: {
+            title: 'Time to Sort (seconds)'
+          }
         };
 
         var chart = new google.visualization.LineChart(

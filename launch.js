@@ -96,7 +96,7 @@ function convertToUIReadableData(data) {
   const result = [];
 
   result.push({
-    title: "Quick Sort",
+    title: "Quick Sort, O(n log n)",
     values: [
       ["Number of Elements in Array", "Random Order", "Sorted (ASC)", "Sorted (DESC)"],
       [ARRAY_SIZES.SMALL, data["quickSort"]["RANDOM"][0], data["quickSort"]["ASC"][0], data["quickSort"]["DESC"][0]],
