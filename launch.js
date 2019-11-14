@@ -163,6 +163,67 @@ function convertToUIReadableData(data) {
       [ARRAY_SIZES.XXXLARGE, data["standartSort"]["RANDOM"][5], data["standartSort"]["ASC"][5], data["standartSort"]["DESC"][5]],
     ]
   });
+
+  result.push({
+    title: "All implementations",
+    values: [
+      [
+        "Number of Elements in Array",
+        "Quick - Random Order", "Quick - Sorted (ASC)", "Quick - Sorted (DESC)",
+        "Merge - Random Order", "Merge - Sorted (ASC)", "Merge - Sorted (DESC)",
+        "Insertion - Random Order", "Insertion - Sorted (ASC)", "Insertion - Sorted (DESC)",
+        "Standart - Random Order", "Standart - Sorted (ASC)", "Standart - Sorted (DESC)"
+      ],
+      
+      [
+        ARRAY_SIZES.SMALL,
+        data["quickSort"]["RANDOM"][0], data["quickSort"]["ASC"][0], data["quickSort"]["DESC"][0],
+        data["mergeSort"]["RANDOM"][0], data["mergeSort"]["ASC"][0], data["mergeSort"]["DESC"][0],
+        data["insertionSort"]["RANDOM"][0], data["insertionSort"]["ASC"][0], data["insertionSort"]["DESC"][0],
+        data["standartSort"]["RANDOM"][0], data["standartSort"]["ASC"][0], data["standartSort"]["DESC"][0]
+      ],
+
+      [
+        ARRAY_SIZES.MEDIUM,
+        data["quickSort"]["RANDOM"][1], data["quickSort"]["ASC"][1], data["quickSort"]["DESC"][1],
+        data["mergeSort"]["RANDOM"][1], data["mergeSort"]["ASC"][1], data["mergeSort"]["DESC"][1],
+        data["insertionSort"]["RANDOM"][1], data["insertionSort"]["ASC"][1], data["insertionSort"]["DESC"][1],
+        data["standartSort"]["RANDOM"][1], data["standartSort"]["ASC"][1], data["standartSort"]["DESC"][1]
+      ],
+
+      [
+        ARRAY_SIZES.LARGE,
+        data["quickSort"]["RANDOM"][2], data["quickSort"]["ASC"][2], data["quickSort"]["DESC"][2],
+        data["mergeSort"]["RANDOM"][2], data["mergeSort"]["ASC"][2], data["mergeSort"]["DESC"][2],
+        data["insertionSort"]["RANDOM"][2], data["insertionSort"]["ASC"][2], data["insertionSort"]["DESC"][2],
+        data["standartSort"]["RANDOM"][2], data["standartSort"]["ASC"][2], data["standartSort"]["DESC"][2]
+      ],
+
+      [
+        ARRAY_SIZES.XLARGE,
+        data["quickSort"]["RANDOM"][3], data["quickSort"]["ASC"][3], data["quickSort"]["DESC"][3],
+        data["mergeSort"]["RANDOM"][3], data["mergeSort"]["ASC"][3], data["mergeSort"]["DESC"][3],
+        data["insertionSort"]["RANDOM"][3], data["insertionSort"]["ASC"][3], data["insertionSort"]["DESC"][3],
+        data["standartSort"]["RANDOM"][3], data["standartSort"]["ASC"][3], data["standartSort"]["DESC"][3]
+      ],
+
+      [
+        ARRAY_SIZES.XXLARGE,
+        data["quickSort"]["RANDOM"][4], data["quickSort"]["ASC"][4], data["quickSort"]["DESC"][4],
+        data["mergeSort"]["RANDOM"][4], data["mergeSort"]["ASC"][4], data["mergeSort"]["DESC"][4],
+        data["insertionSort"]["RANDOM"][4], data["insertionSort"]["ASC"][4], data["insertionSort"]["DESC"][4],
+        data["standartSort"]["RANDOM"][4], data["standartSort"]["ASC"][4], data["standartSort"]["DESC"][4]
+      ],
+
+      [
+        ARRAY_SIZES.XXXLARGE,
+        data["quickSort"]["RANDOM"][5], data["quickSort"]["ASC"][5], data["quickSort"]["DESC"][5],
+        data["mergeSort"]["RANDOM"][5], data["mergeSort"]["ASC"][5], data["mergeSort"]["DESC"][5],
+        data["insertionSort"]["RANDOM"][5], data["insertionSort"]["ASC"][5], data["insertionSort"]["DESC"][5],
+        data["standartSort"]["RANDOM"][5], data["standartSort"]["ASC"][5], data["standartSort"]["DESC"][5]
+      ],
+    ]
+  });
   
   return result;
 }
