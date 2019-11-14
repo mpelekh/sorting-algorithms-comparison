@@ -1,7 +1,7 @@
 const fs = require("fs");
-const quickSort = require("./algorithms/quick-sort");
-const insertionSort = require("./algorithms/insertion-sort");
-const mergeSort = require("./algorithms/merge-sort");
+const quickSort = require("./algorithms-implementations/quick-sort");
+const insertionSort = require("./algorithms-implementations/insertion-sort");
+const mergeSort = require("./algorithms-implementations/merge-sort");
 const { generateNumbers, calculateTimeDiff } = require("./utils");
 
 const ARRAY_SIZES = {
