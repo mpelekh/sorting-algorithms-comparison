@@ -29,6 +29,19 @@ The results should be presented in a convenient format:
 - insertion sort
 - standard sorting method used in the JavaScript programming language (`Array.prototype.sort`).
 
+**The algorithms implementations were tested for three datasets:**
+- an array of random numbers
+- the same array sorted by descending order
+- the same array sorted by ascending order.
+
+**The array sizes are as follows:**
+- 30
+- 1000
+- 10 000
+- 100 000
+- 1 000 000
+- 10 000 000
+
 **The results are presented in a chart format by the following link:** https://mpelekh.github.io/sorting-algorithms-comparison.
 
 ## Development
