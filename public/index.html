@@ -11,6 +11,8 @@
 
     <div id="curve_chart1" style="width: 900px; height: 500px"></div>
     <div id="curve_chart2" style="width: 900px; height: 500px"></div>
+    <div id="curve_chart3" style="width: 900px; height: 500px"></div>
+    <div id="curve_chart4" style="width: 900px; height: 500px"></div>
 
 <script>
     fetch("result.json")
@@ -18,18 +20,14 @@
         .then(resultList => {
             google.charts.load("current", { packages: ["corechart"] });
             google.charts.setOnLoadCallback(draw);
-
             function draw() {
                 resultList.forEach(({title, values}, index) => {
                     drawChart({title, values, elementId: `curve_chart${index + 1}`})
                 });
             }
         });
-
-
     function drawChart({title, values, elementId}) {
         var data = google.visualization.arrayToDataTable(values);
-
         var options = {
           title,
           curveType: "function",
@@ -41,11 +39,9 @@
             title: 'Time to Sort (seconds)'
           }
         };
-
         var chart = new google.visualization.LineChart(
           document.getElementById(elementId)
         );
-
         chart.draw(data, options);
       }
 </script>

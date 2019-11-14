@@ -1,5 +1,7 @@
 const fs = require("fs");
 const quickSort = require("./algorithms/quick-sort");
+const insertionSort = require("./algorithms/insertion-sort");
+const mergeSort = require("./algorithms/merge-sort");
 const { generateNumbers, calculateTimeDiff } = require("./utils");
 
 const ARRAY_SIZES = {
@@ -49,6 +51,19 @@ launchAlgorithm({
 });
 
 launchAlgorithm({
+  sortFunction: mergeSort,
+  sortFunctionName: "mergeSort",
+  result
+});
+
+launchAlgorithm({
+  sortFunction: insertionSort,
+  sortFunctionName: "insertionSort",
+  result,
+  skipSizes: ["XXXLARGE"],
+});
+
+launchAlgorithm({
   sortFunctionName: "standartSort",
   result
 });
@@ -57,7 +72,7 @@ console.log(result);
 
 fs.writeFileSync("./result.json", JSON.stringify(convertToUIReadableData(result)));
 
-function launchAlgorithm({ sortFunction, sortFunctionName, result }) {
+function launchAlgorithm({ sortFunction, sortFunctionName, result, skipSizes = [] }) {
   console.log(` === ${sortFunctionName} ===`);
 
   result[sortFunctionName] = {};
@@ -68,6 +83,9 @@ function launchAlgorithm({ sortFunction, sortFunctionName, result }) {
     const diffs = [];
 
     for (const size in ARRAY_SIZES) {
+      if (skipSizes.includes(size)) {
+        continue;
+      }
       console.log(`${sequnce} - ${size}`);
 
       testSequence = [...TEST_SEQUENCES[sequnce][size]];
@@ -105,6 +123,31 @@ function convertToUIReadableData(data) {
       [ARRAY_SIZES.XLARGE, data["quickSort"]["RANDOM"][3], data["quickSort"]["ASC"][3], data["quickSort"]["DESC"][3]],
       [ARRAY_SIZES.XXLARGE, data["quickSort"]["RANDOM"][4], data["quickSort"]["ASC"][4], data["quickSort"]["DESC"][4]],
       [ARRAY_SIZES.XXXLARGE, data["quickSort"]["RANDOM"][5], data["quickSort"]["ASC"][5], data["quickSort"]["DESC"][5]],
+    ]
+  });
+
+  result.push({
+    title: "Merge Sort, O(n log n)",
+    values: [
+      ["Number of Elements in Array", "Random Order", "Sorted (ASC)", "Sorted (DESC)"],
+      [ARRAY_SIZES.SMALL, data["mergeSort"]["RANDOM"][0], data["mergeSort"]["ASC"][0], data["mergeSort"]["DESC"][0]],
+      [ARRAY_SIZES.MEDIUM, data["mergeSort"]["RANDOM"][1], data["mergeSort"]["ASC"][1], data["mergeSort"]["DESC"][1]],
+      [ARRAY_SIZES.LARGE, data["mergeSort"]["RANDOM"][2], data["mergeSort"]["ASC"][2], data["mergeSort"]["DESC"][2]],
+      [ARRAY_SIZES.XLARGE, data["mergeSort"]["RANDOM"][3], data["mergeSort"]["ASC"][3], data["mergeSort"]["DESC"][3]],
+      [ARRAY_SIZES.XXLARGE, data["mergeSort"]["RANDOM"][4], data["mergeSort"]["ASC"][4], data["mergeSort"]["DESC"][4]],
+      [ARRAY_SIZES.XXXLARGE, data["mergeSort"]["RANDOM"][5], data["mergeSort"]["ASC"][5], data["mergeSort"]["DESC"][5]],
+    ]
+  });
+
+  result.push({
+    title: "Insertion Sort, O(n ^ 2)",
+    values: [
+      ["Number of Elements in Array", "Random Order", "Sorted (ASC)", "Sorted (DESC)"],
+      [ARRAY_SIZES.SMALL, data["insertionSort"]["RANDOM"][0], data["insertionSort"]["ASC"][0], data["insertionSort"]["DESC"][0]],
+      [ARRAY_SIZES.MEDIUM, data["insertionSort"]["RANDOM"][1], data["insertionSort"]["ASC"][1], data["insertionSort"]["DESC"][1]],
+      [ARRAY_SIZES.LARGE, data["insertionSort"]["RANDOM"][2], data["insertionSort"]["ASC"][2], data["insertionSort"]["DESC"][2]],
+      [ARRAY_SIZES.XLARGE, data["insertionSort"]["RANDOM"][3], data["insertionSort"]["ASC"][3], data["insertionSort"]["DESC"][3]],
+      [ARRAY_SIZES.XXLARGE, data["insertionSort"]["RANDOM"][4], data["insertionSort"]["ASC"][4], data["insertionSort"]["DESC"][4]],
     ]
   });
 
