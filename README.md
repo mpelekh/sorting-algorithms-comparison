@@ -36,15 +36,15 @@ The results should be presented in a convenient format:
 
 In the project directory, you can run:
 
-### `npm build`
+### `npm run build`
 
 Launches the foregoing algorithms with the appropriate sequences and keeps the results into `result.json` file.  
 Creates the `/dist` directory which can be deployed to web server as the source of static assets.
 
-### `npm clean`
+### `npm run clean`
 
 Removes the `/dist` directory.
 
-### `npm deploy`
+### `npm run deploy`
 
 Deploys the comparison results as on `gh-pages`.
