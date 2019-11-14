@@ -152,7 +152,7 @@ function convertToUIReadableData(data) {
   });
 
   result.push({
-    title: "Standart Sort",
+    title: "Standart Sort, (Array.prototype.sort)",
     values: [
       ["Number of Elements in Array", "Random Order", "Sorted (ASC)", "Sorted (DESC)"],
       [ARRAY_SIZES.SMALL, data["standartSort"]["RANDOM"][0], data["standartSort"]["ASC"][0], data["standartSort"]["DESC"][0]],
