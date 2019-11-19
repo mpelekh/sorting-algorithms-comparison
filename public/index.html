@@ -2,35 +2,60 @@
 <html lang="en">
 <head>
     <title>Sorting Algorithms Comparison</title>
-    <script
-      type="text/javascript"
-      src="https://www.gstatic.com/charts/loader.js"
-    ></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+      .chart-block {
+        border: 1px solid black;
+        margin-bottom: 30px;
+        padding: 10px;
+        width: 1200px
+      }
+    </style>
 </head>
 <body>
     <h1>Sorting Algorithms Comparison</h1>
 
-    <div id="curve_chart1" style="width: 900px; height: 500px"></div>
-    <div id="curve_chart2" style="width: 900px; height: 500px"></div>
-    <div id="curve_chart3" style="width: 900px; height: 500px"></div>
-    <div id="curve_chart4" style="width: 900px; height: 500px"></div>
-    <div id="curve_chart5" style="width: 900px; height: 500px"></div>
+    <div id="chart_block1" class="chart-block">
+      <div id="chart_control1"></div>
+      <div id="line_chart1" style="width: 900px; height: 500px"></div>
+    </div>
+
+    <div id="chart_block2" class="chart-block">
+      <div id="chart_control2"></div>
+      <div id="line_chart2" style="width: 900px; height: 500px"></div>
+    </div>
+
+    <div id="chart_block3" class="chart-block">
+      <div id="chart_control3"></div>
+      <div id="line_chart3" style="width: 900px; height: 500px"></div>
+    </div>
+
+    <div id="chart_block4" class="chart-block">
+      <div id="chart_control4"></div>
+      <div id="line_chart4" style="width: 900px; height: 500px"></div>
+    </div>
+
+    <div id="chart_block5" class="chart-block">
+      <div id="chart_control5"></div>
+      <div id="line_chart5" style="width: 900px; height: 500px"></div>
+    </div>
 
 <script>
     fetch("result.json")
         .then(response => response.json())
         .then(resultList => {
-            google.charts.load("current", { packages: ["corechart"] });
+            google.charts.load("current", { packages: ["corechart", "controls"] });
             google.charts.setOnLoadCallback(draw);
             function draw() {
                 resultList.forEach(({title, values}, index) => {
-                    drawChart({title, values, elementId: `curve_chart${index + 1}`})
+                    drawChart({title, values, elementId: `line_chart${index + 1}`, dashboardElementId: `chart_control${index + 1}`})
                 });
             }
         });
-    function drawChart({title, values, elementId}) {
-        var data = google.visualization.arrayToDataTable(values);
-        var options = {
+
+    function drawChart({title, values, elementId, dashboardElementId}) {
+        const data = google.visualization.arrayToDataTable(values);
+        const options = {
           title,
           curveType: "function",
           legend: { position: "bottom" },
@@ -41,10 +66,22 @@
             title: 'Time to Sort (seconds)'
           }
         };
-        var chart = new google.visualization.LineChart(
-          document.getElementById(elementId)
-        );
-        chart.draw(data, options);
+        const chart = new google.visualization.ChartWrapper({
+          chartType: 'LineChart',
+          containerId: elementId,
+          options
+        });
+        const dashboard = new google.visualization.Dashboard(document.getElementById('chart_block'));
+        const rangeSlider = new google.visualization.ControlWrapper({
+          controlType: 'NumberRangeFilter',
+          containerId: dashboardElementId,
+          options: {
+            'filterColumnLabel': 'Number of Elements in Array'
+          }
+        });
+
+        dashboard.bind(rangeSlider, chart);
+        dashboard.draw(data);
       }
 </script>
 
